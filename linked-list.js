@@ -165,7 +165,7 @@ class LinkedList {
 
   }
 
-  
+
  
 }
 
@@ -191,7 +191,11 @@ function main() {
 
   // SLL.insertAt('Kat',33);
 
-  displayLL(SLL);
+  console.log(displayLL(SLL));
+
+  console.log(countList(SLL));
+
+  console.log(isListEmpty(SLL));
 
   return SLL;
 
@@ -245,9 +249,55 @@ function displayLL(ssl) {
     return;
   }
   let currNode = ssl.head;
+
+  let arrList = [];
   while (currNode !== null) {
-    console.log(currNode);
+    //console.log(currNode);
+
+    arrList.push(currNode.value);
+
     currNode = currNode.next;
   }
+ 
+  return arrList;
+
 }
 
+function countList(ssl) {
+
+  if(ssl.head === null){
+
+    console.log('no list');
+    return;
+
+  }
+
+  let currNode = ssl.head;
+  let count = 0;
+
+  while(currNode !== null){
+
+    count ++;
+
+    currNode = currNode.next;
+ 
+  }
+
+  return ('List count = ' + count);
+
+}
+
+function isListEmpty(ssl){
+
+  if(ssl.head !== null){
+
+    console.log('List is not empty');
+    
+    return false;
+     
+  } 
+
+  console.log('The list is empty');
+  return true;
+
+}
