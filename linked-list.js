@@ -133,6 +133,40 @@ class LinkedList {
     return;
   }
 
+  insertAt(item, pos){
+
+    let currNode = this.head;
+    let prevNode = this.head;
+    let count = 0;
+
+    while(count !== pos && currNode !== null){
+
+      prevNode = currNode;
+
+      currNode = currNode.next;
+
+      count ++;
+ 
+    }
+
+    if(currNode === null){
+
+      console.log('cannot insert at');
+
+    }
+
+    prevNode.next = new _Node(item,currNode);
+
+    console.log('prevNode is', prevNode);
+    console.log('prevNode.next is', prevNode.next);
+    console.log('curNode is', currNode);
+
+    return;
+
+  }
+
+  
+ 
 }
 
 function main() {
@@ -148,12 +182,16 @@ function main() {
   SLL.insertLast('Tauhida');
 
   //Remove squirrel
-  SLL.remove('squirrel');
+  SLL.remove('Tauhida');
 
   //
-  SLL.insertBefore('Spock','Starbuck');
+  // SLL.insertBefore('Athena','Boomer');
 
-  SLL.insertAfter('Barrett', 'Boomer');
+  // SLL.insertAfter('Hotdog', 'Helo');
+
+  // SLL.insertAt('Kat',33);
+
+
 
   return SLL;
 
