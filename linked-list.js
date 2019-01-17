@@ -71,6 +71,7 @@ class LinkedList {
       //return null if end of the list 
       // and the item is not on the list
       if (currNode.next === null) {
+        console.log('Item not found');
         return null;
       }
       else {
@@ -83,6 +84,42 @@ class LinkedList {
 
   }
 
+
+  insertBefore(item,key){
+
+    let curNode = this.head;
+    let prevNode = this.head;
+
+    while(curNode !== null && key !== curNode.value){
+
+      // console.log('key ',key);
+      // console.log('curNode.value ',curNode.value);
+      // console.log('curNode ',curNode);
+      // console.log('prevNode ',prevNode);
+
+      prevNode = curNode;
+      curNode = curNode.next;
+
+    }
+
+    if(curNode === null){
+
+      console.log('Nothing to insert');
+      return;
+
+    }
+
+    console.log('HERE');
+
+    prevNode.next = new _Node(item,curNode);
+
+    console.log('prevNode.next ',prevNode.next);
+
+    return;
+ 
+  }
+
+
 }
 
 function main() {
@@ -92,7 +129,62 @@ function main() {
   SLL.insertLast('Helo');
   SLL.insertLast('Husker');
   SLL.insertLast('Starbuck');
+  
+
+  //Add Tauhida
+  SLL.insertLast('Tauhida');
+
+  //Remove squirrel
+  SLL.remove('squirrel');
+
+  //
+  SLL.insertBefore('Spock','Starbuck');
+
   return SLL;
+
 }
 
 console.log(main());
+
+
+
+
+
+
+
+
+function inserInSortedOrder(sll, item){
+
+  let previous = sll.head;
+  let current = sll.head;
+
+  //Inserts at the very beginning
+  if(item<sll.head.value){
+
+    this.head = new _Node(item,this.head);
+
+  }
+
+  while(current){
+ 
+    //Normal case
+    if(current.value>item){
+
+      previous.next = new _Node(item,current);
+      return sll;
+ 
+    }
+
+    previous = current;
+    current = current.next;
+
+    //Inserts at the very end
+    //if current === null
+
+    previous.next = new _Node(item,null);
+    return sll;
+
+  
+  }
+
+}
