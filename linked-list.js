@@ -191,18 +191,13 @@ function main() {
 
   // SLL.insertAt('Kat',33);
 
-
+  displayLL(SLL);
 
   return SLL;
 
 }
 
 console.log(main());
-
-
-
-
-
 
 
 
@@ -241,3 +236,18 @@ function inserInSortedOrder(sll, item){
   }
 
 }
+
+// loop through ssl
+// console.log each node first, then push each into an array if that works
+function displayLL(ssl) {
+  if (ssl.head === null) {
+    console.log('no list');
+    return;
+  }
+  let currNode = ssl.head;
+  while (currNode !== null) {
+    console.log(currNode);
+    currNode = currNode.next;
+  }
+}
+
