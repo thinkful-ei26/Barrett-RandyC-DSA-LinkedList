@@ -191,12 +191,15 @@ function main() {
 
   // SLL.insertAt('Kat',33);
 
-  console.log(displayLL(SLL));
+  // console.log(displayLL(SLL));
 
-  console.log(countList(SLL));
+  // console.log(countList(SLL));
 
-  console.log(isListEmpty(SLL));
+  // console.log(isListEmpty(SLL));
 
+  // console.log(findPrevious(SLL, 'Husker'));
+
+  console.log(findLast(SLL));
   return SLL;
 
 }
@@ -243,12 +246,12 @@ function inserInSortedOrder(sll, item){
 
 // loop through ssl
 // console.log each node first, then push each into an array if that works
-function displayLL(ssl) {
-  if (ssl.head === null) {
+function displayLL(sll) {
+  if (sll.head === null) {
     console.log('no list');
     return;
   }
-  let currNode = ssl.head;
+  let currNode = sll.head;
 
   let arrList = [];
   while (currNode !== null) {
@@ -263,16 +266,16 @@ function displayLL(ssl) {
 
 }
 
-function countList(ssl) {
+function countList(sll) {
 
-  if(ssl.head === null){
+  if(sll.head === null){
 
     console.log('no list');
     return;
 
   }
 
-  let currNode = ssl.head;
+  let currNode = sll.head;
   let count = 0;
 
   while(currNode !== null){
@@ -287,9 +290,9 @@ function countList(ssl) {
 
 }
 
-function isListEmpty(ssl){
+function isListEmpty(sll){
 
-  if(ssl.head !== null){
+  if(sll.head !== null){
 
     console.log('List is not empty');
     
@@ -300,4 +303,45 @@ function isListEmpty(ssl){
   console.log('The list is empty');
   return true;
 
+}
+
+function findPrevious(sll, key) {
+  let currNode = sll.head;
+  let prevNode = sll.head;
+
+  if(sll.head === null){
+
+    console.log('no list');
+    return;
+
+  }
+
+  while (currNode.value !== key && currNode !== null) {
+    prevNode = currNode;
+    currNode = currNode.next;
+  }
+  
+  if (currNode === null) {
+    console.log('not found');
+    return;
+  }
+
+  return prevNode;
+
+}
+
+function findLast(sll) {
+  let currNode = sll.head;
+
+  if(sll.head === null){
+
+    console.log('no list');
+    return;
+
+  }
+
+  while (currNode.next !== null) {
+    currNode = currNode.next;
+  }
+  return currNode;
 }
