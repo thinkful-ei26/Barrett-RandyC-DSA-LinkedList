@@ -85,17 +85,12 @@ class LinkedList {
   }
 
 
-  insertBefore(item,key){
+  insertBefore(item, key){
 
     let curNode = this.head;
     let prevNode = this.head;
 
     while(curNode !== null && key !== curNode.value){
-
-      // console.log('key ',key);
-      // console.log('curNode.value ',curNode.value);
-      // console.log('curNode ',curNode);
-      // console.log('prevNode ',prevNode);
 
       prevNode = curNode;
       curNode = curNode.next;
@@ -109,16 +104,34 @@ class LinkedList {
 
     }
 
-    console.log('HERE');
-
     prevNode.next = new _Node(item,curNode);
-
-    console.log('prevNode.next ',prevNode.next);
-
     return;
- 
   }
 
+  insertAfter(item, key) {
+    let curNode = this.head;
+    let prevNode = this.head;
+
+    while(curNode !== null && key !== prevNode.value){
+
+      prevNode = curNode;
+      curNode = curNode.next;
+
+    }
+
+    if(prevNode === null){
+
+      console.log('Nothing to insert');
+      return;
+
+    }
+
+    prevNode.next = new _Node(item,curNode);
+    console.log('prevNode is', prevNode);
+    console.log('prevNode.next is', prevNode.next);
+    console.log('curNode is', curNode);
+    return;
+  }
 
 }
 
@@ -139,6 +152,8 @@ function main() {
 
   //
   SLL.insertBefore('Spock','Starbuck');
+
+  SLL.insertAfter('Barrett', 'Boomer');
 
   return SLL;
 
